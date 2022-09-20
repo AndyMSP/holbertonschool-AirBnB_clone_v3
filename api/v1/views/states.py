@@ -2,7 +2,7 @@
 """Module contains views for State objects"""
 
 from api.v1.views import state_views
-from flask import jsonify
+from flask import jsonify, abort
 from models.state import State
 from models import storage
 
@@ -16,3 +16,14 @@ def all_states():
         list_states.append(state.to_dict())
     states_j = jsonify(list_states)
     return (states_j)
+
+
+@state_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
+def one_state(state_id):
+    """return one specific state in json format or 404 if no match"""
+    state = storage.get(State, state_id)
+    if state is None:
+        abort(404)
+    else:
+        state_j = jsonify(state.to_dict())
+        return (state_j)
