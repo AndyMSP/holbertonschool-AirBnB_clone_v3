@@ -24,6 +24,14 @@ def error_404(error):
     return (response, 404)
 
 
+@app.errorhandler(400)
+def error_400(error):
+    """Response for 400 errors"""
+    response = jsonify(error=error.description)
+    return (response, 400)
+
+
+
 if __name__ == '__main__':
     host = os.getenv('HBNB_API_HOST')
     if host is None:
