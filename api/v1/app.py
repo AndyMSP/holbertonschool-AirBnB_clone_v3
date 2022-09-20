@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """top level module to define and run app"""
 
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 import os
@@ -14,6 +14,13 @@ app.register_blueprint(app_views)
 def teardown_db(exception):
     """closes the storage on teardown"""
     storage.close()
+
+
+@app.errorhandler(404)
+def error_404(error):
+    """Response for resource not found"""
+    response = jsonify(error='Not found')
+    return (response)
 
 
 if __name__ == '__main__':
