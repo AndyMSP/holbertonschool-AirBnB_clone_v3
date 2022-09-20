@@ -27,3 +27,15 @@ def one_state(state_id):
     else:
         state_j = jsonify(state.to_dict())
         return (state_j)
+
+
+@state_views.route('/states/<state_id>', methods=['DELETE'],
+                    strict_slashes=False)
+def del_state(state_id):
+    """delete a state or return 404 if state doesn't exist"""
+    state=storage.get(State, state_id)
+    if state is None:
+        abort(404)
+    else:
+        state.delete()
+        return (jsonify({}), 200)
