@@ -20,7 +20,7 @@ def teardown_db(exception):
 def error_404(error):
     """Response for resource not found"""
     response = jsonify(error='Not found')
-    return (response)
+    return (response, 404)
 
 
 if __name__ == '__main__':
