@@ -12,6 +12,8 @@ def all_states():
     """returns all states in json format"""
     list_states = []
     states_v = storage.all(State).values()
-    states_l = [state.to_dict() for state in states_v]
-    states_j = jsonify(states_l)
+    for state in states_v:
+        list_states.append(state.to_dict())
+    # states_l = [state.to_dict() for state in states_v]
+    states_j = jsonify(list_states)
     return (states_j)
