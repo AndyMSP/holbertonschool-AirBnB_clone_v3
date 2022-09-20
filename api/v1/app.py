@@ -31,7 +31,6 @@ def error_400(error):
     return (response, 400)
 
 
-
 if __name__ == '__main__':
     host = os.getenv('HBNB_API_HOST')
     if host is None:
