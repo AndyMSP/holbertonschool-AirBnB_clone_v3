@@ -3,11 +3,12 @@
 
 from flask import Flask, jsonify
 from models import storage
-from api.v1.views import app_views
+from api.v1.views import app_views, state_views
 import os
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
+app.register_blueprint(state_views)
 
 
 @app.teardown_appcontext
@@ -24,12 +25,10 @@ def error_404(error):
 
 
 if __name__ == '__main__':
-    try:
-        host = os.getenv('HBNB_API_HOST')
-    except Exception:
+    host = os.getenv('HBNB_API_HOST')
+    if host is None:
         host = '0.0.0.0'
-    try:
-        port = os.getenv('HBNB_API_PORT')
-    except Exception:
+    port = os.getenv('HBNB_API_PORT')
+    if port is None:
         port = '5000'
     app.run(host=host, port=port, threaded=True)

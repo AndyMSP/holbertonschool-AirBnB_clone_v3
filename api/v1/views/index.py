@@ -17,22 +17,16 @@ classes = {"Amenity": Amenity, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
 
 
-@app_views.route('/status')
+@app_views.route('/status', strict_slashes=False)
 def status():
     """returns status in json format"""
     response = jsonify(status='OK')
     return(response)
 
 
-@app_views.route('/stats')
+@app_views.route('/stats', strict_slashes=False)
 def stats():
     """returns count of each object in storage"""
-    amenities = storage.count(Amenity)
-    cities = storage.count(City)
-    places = storage.count(Place)
-    reviews = storage.count(Review)
-    states = storage.count(State)
-    users = storage.count(User)
     response = jsonify(amenities=storage.count(Amenity),
                        cities=storage.count(City),
                        places=storage.count(Place),
