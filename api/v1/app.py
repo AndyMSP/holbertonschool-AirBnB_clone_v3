@@ -7,7 +7,8 @@ from api.v1.views import (
     app_views,
     state_views,
     city_views,
-    amenity_views
+    amenity_views,
+    user_views
     )
 import os
 
@@ -16,6 +17,7 @@ app.register_blueprint(app_views)
 app.register_blueprint(state_views)
 app.register_blueprint(city_views)
 app.register_blueprint(amenity_views)
+app.register_blueprint(user_views)
 
 
 @app.teardown_appcontext
