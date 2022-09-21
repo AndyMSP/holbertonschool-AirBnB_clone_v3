@@ -43,7 +43,7 @@ def one_city(city_id):
     strict_slashes=False
     )
 def del_city(city_id):
-    """delete a state or return 404 if state doesn't exist"""
+    """delete a city or return 404 if city doesn't exist"""
     city = storage.get(City, city_id)
     if city is None:
         abort(404)
