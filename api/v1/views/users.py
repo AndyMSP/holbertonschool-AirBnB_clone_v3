@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module contains views for State objects"""
+"""Module contains views for User objects"""
 
 from api.v1.views import user_views
 from flask import jsonify, abort, request
@@ -20,7 +20,7 @@ def all_users():
 
 @user_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
 def one_user(user_id):
-    """return one specific state in json format or 404 if no match"""
+    """return one specific user in json format or 404 if no match"""
     user = storage.get(User, user_id)
     if user is None:
         abort(404)
@@ -30,7 +30,7 @@ def one_user(user_id):
 
 
 @user_views.route(
-    '/user/<user_id>',
+    '/users/<user_id>',
     methods=['DELETE'],
     strict_slashes=False
     )
