@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module contains views for city objects"""
+"""Module contains views for place objects"""
 
 from api.v1.views import place_views
 from flask import jsonify, abort, request
