@@ -2,6 +2,7 @@
 """top level module to define and run app"""
 
 from flask import Flask, jsonify
+from flask_cors import CORS
 from models import storage
 from api.v1.views import (
     app_views,
@@ -15,6 +16,7 @@ from api.v1.views import (
 import os
 
 app = Flask(__name__)
+CORS(app)
 app.register_blueprint(app_views)
 app.register_blueprint(state_views)
 app.register_blueprint(city_views)
