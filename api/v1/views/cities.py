@@ -64,6 +64,9 @@ def create_city(state_id):
     payload = request.get_json()
     if 'name' not in payload.keys():
         abort(400, 'Missing name')
+    state = storage.get(State, 'state_id')
+    if state is None:
+        abort(404)
     payload.update({'state_id': state_id})
     city = City(**payload)
     storage.new(city)
