@@ -8,7 +8,7 @@ from models import storage
 
 
 @amenity_views.route(
-    '/amenity',
+    '/amenities',
     methods=['GET'],
     strict_slashes=False
     )
