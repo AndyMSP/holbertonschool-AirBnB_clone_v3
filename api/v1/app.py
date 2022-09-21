@@ -16,7 +16,7 @@ from api.v1.views import (
 import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins='0.0.0.0')
 app.register_blueprint(app_views)
 app.register_blueprint(state_views)
 app.register_blueprint(city_views)
